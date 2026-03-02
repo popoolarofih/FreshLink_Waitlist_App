@@ -100,7 +100,7 @@ function GridBackground() {
       <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.04 }}>
         <defs>
           <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#4caf7d" strokeWidth="0.5"/>
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#4caf7d" strokeWidth="0.5" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -123,36 +123,36 @@ function Navbar({ scrolled }) {
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
       borderBottom: scrolled ? '1px solid rgba(78,175,125,0.12)' : '1px solid transparent',
       transition: 'all 0.4s ease',
-      padding: '0 24px',
+      padding: '0 20px',
     }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <img 
-            src="ChatGPT Image Feb 27, 2026, 11_51_27 AM.png" 
-            alt="FreshLink Logo" 
+          <img
+            src="ChatGPT Image Feb 27, 2026, 11_51_27 AM.png"
+            alt="FreshLink Logo"
             style={{
-              width: 50, 
-              height: 50, 
-              borderRadius: 10,
+              width: 40,
+              height: 40,
+              borderRadius: 8,
               objectFit: 'cover',
               boxShadow: '0 0 20px rgba(46,139,87,0.4)',
-            }} 
+            }}
           />
-          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em', color: 'white' }}>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(18px, 4vw, 22px)', letterSpacing: '-0.02em', color: 'white' }}>
             Fresh<span style={{ color: 'var(--green-400)' }}>Link</span>
           </span>
         </div>
 
         {/* Desktop nav */}
-        <nav style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="desktop-nav">
+        <nav style={{ display: 'flex', gap: 'clamp(16px, 3vw, 32px)', alignItems: 'center' }} className="desktop-only">
           {['How It Works', 'Features', 'Roadmap', 'About'].map(item => (
             <a key={item} href={`#${item.toLowerCase().replace(/ /g, '-')}`} style={{
-              color: 'var(--text-muted)', textDecoration: 'none', fontSize: 14, fontWeight: 500,
+              color: 'var(--text-muted)', textDecoration: 'none', fontSize: 13, fontWeight: 500,
               transition: 'color 0.2s', letterSpacing: '0.01em',
             }}
-            onMouseEnter={e => e.target.style.color = 'var(--green-300)'}
-            onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+              onMouseEnter={e => e.target.style.color = 'var(--green-300)'}
+              onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
             >{item}</a>
           ))}
         </nav>
@@ -160,15 +160,15 @@ function Navbar({ scrolled }) {
         {/* CTA */}
         <a href="#waitlist" style={{
           background: 'linear-gradient(135deg, #2e8b57, #1a5b2e)',
-          color: 'white', padding: '10px 22px', borderRadius: 8,
-          fontSize: 13, fontWeight: 700, textDecoration: 'none',
+          color: 'white', padding: '8px 16px', borderRadius: 8,
+          fontSize: 12, fontWeight: 700, textDecoration: 'none',
           border: '1px solid rgba(78,175,125,0.3)',
           boxShadow: '0 0 20px rgba(46,139,87,0.25)',
           transition: 'all 0.2s', letterSpacing: '0.03em',
           fontFamily: 'var(--font-display)',
         }}
-        onMouseEnter={e => { e.target.style.transform = 'translateY(-1px)'; e.target.style.boxShadow = '0 4px 30px rgba(46,139,87,0.45)'; }}
-        onMouseLeave={e => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 0 20px rgba(46,139,87,0.25)'; }}
+          onMouseEnter={e => { e.target.style.transform = 'translateY(-1px)'; e.target.style.boxShadow = '0 4px 30px rgba(46,139,87,0.45)'; }}
+          onMouseLeave={e => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 0 20px rgba(46,139,87,0.25)'; }}
         >Join Waitlist</a>
       </div>
     </header>
@@ -249,8 +249,7 @@ function HeroSection() {
           <div id="waitlist" style={{ animation: 'fadeUp 0.7s 0.3s ease both', opacity: 0 }}>
             {!submitted ? (
               <form onSubmit={handleSubmit}>
-                <div style={{
-                  display: 'flex', gap: 0, maxWidth: 520,
+                <div className="waitlist-form-container" style={{
                   background: 'rgba(10,31,16,0.8)', border: '1px solid rgba(78,175,125,0.3)',
                   borderRadius: 12, padding: 6, backdropFilter: 'blur(20px)',
                   boxShadow: '0 0 40px rgba(46,139,87,0.15)',
@@ -267,7 +266,7 @@ function HeroSection() {
                       fontFamily: 'var(--font-body)', minWidth: 0,
                     }}
                   />
-                  <button type="submit" style={{
+                  <button type="submit" className="btn-responsive" style={{
                     background: 'linear-gradient(135deg, #2e8b57, #1a5b2e)',
                     color: 'white', border: 'none', borderRadius: 8,
                     padding: '12px 24px', fontSize: 14, fontWeight: 700,
@@ -275,8 +274,8 @@ function HeroSection() {
                     fontFamily: 'var(--font-display)', letterSpacing: '0.02em',
                     transition: 'all 0.2s', boxShadow: '0 0 20px rgba(46,139,87,0.3)',
                   }}
-                  onMouseEnter={e => e.target.style.boxShadow = '0 0 30px rgba(46,139,87,0.5)'}
-                  onMouseLeave={e => e.target.style.boxShadow = '0 0 20px rgba(46,139,87,0.3)'}
+                    onMouseEnter={e => e.target.style.boxShadow = '0 0 30px rgba(46,139,87,0.5)'}
+                    onMouseLeave={e => e.target.style.boxShadow = '0 0 20px rgba(46,139,87,0.3)'}
                   >
                     Join Waitlist →
                   </button>
@@ -303,9 +302,9 @@ function HeroSection() {
           </div>
 
           {/* Social proof */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 40, animation: 'fadeUp 0.7s 0.4s ease both', opacity: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 40, animation: 'fadeUp 0.7s 0.4s ease both', opacity: 0 }} className="hero-stats">
             <div style={{ display: 'flex' }}>
-               {['#2e8b57', '#4caf7d', '#1a5b2e', '#f5a623'].map((c, i) => (
+              {['#2e8b57', '#4caf7d', '#1a5b2e', '#f5a623'].map((c, i) => (
                 <div key={i} style={{
                   width: 32, height: 32, borderRadius: '50%',
                   background: c, border: '2px solid var(--green-900)',
@@ -338,9 +337,9 @@ function StatsSection() {
   const ref = useRef(null);
   const inView = useInView(ref);
   return (
-    <section ref={ref} style={{ padding: '80px 24px', position: 'relative' }}>
+    <section ref={ref} style={{ padding: '60px 20px', position: 'relative' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 1, border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden', background: 'var(--border)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 1, border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden', background: 'var(--border)' }}>
           {STATS.map((stat, i) => (
             <div key={i} style={{
               background: 'rgba(10,31,16,0.9)', padding: '40px 32px', textAlign: 'center',
@@ -365,8 +364,8 @@ function HowItWorksSection() {
   const ref = useRef(null);
   const inView = useInView(ref);
   return (
-    <section id="how-it-works" ref={ref} style={{ padding: '100px 24px', position: 'relative' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <section id="how-it-works" ref={ref} style={{ position: 'relative' }} className="section-padding">
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px' }}>
         {/* Section header */}
         <div style={{ marginBottom: 64, opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateY(20px)', transition: 'all 0.6s ease' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--green-400)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
@@ -390,14 +389,14 @@ function HowItWorksSection() {
               transition: `all 0.6s ${0.1 + i * 0.12}s ease`,
               overflow: 'hidden',
             }}
-            onMouseEnter={e => {
-              e.currentTarget.style.background = 'rgba(46,139,87,0.08)';
-              e.currentTarget.style.borderColor = 'rgba(78,175,125,0.35)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.background = 'rgba(10,31,16,0.4)';
-              e.currentTarget.style.borderColor = 'var(--border)';
-            }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'rgba(46,139,87,0.08)';
+                e.currentTarget.style.borderColor = 'rgba(78,175,125,0.35)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'rgba(10,31,16,0.4)';
+                e.currentTarget.style.borderColor = 'var(--border)';
+              }}
             >
               {/* Number */}
               <div style={{
@@ -445,11 +444,11 @@ function FeaturesSection() {
   const ref = useRef(null);
   const inView = useInView(ref);
   return (
-    <section id="features" ref={ref} style={{ padding: '100px 24px', position: 'relative' }}>
+    <section id="features" ref={ref} style={{ position: 'relative' }} className="section-padding">
       {/* Background glow */}
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', maxWidth: 700, background: 'radial-gradient(circle, rgba(46,139,87,0.06) 0%, transparent 60%)', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative', padding: '0 20px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, flexWrap: 'wrap', gap: 24, opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateY(20px)', transition: 'all 0.6s ease' }}>
           <div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--green-400)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>// CAPABILITIES</div>
@@ -463,7 +462,7 @@ function FeaturesSection() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
           {FEATURES.map((f, i) => (
             <div key={i} style={{
               padding: '32px 28px',
@@ -475,26 +474,26 @@ function FeaturesSection() {
               transform: inView ? 'none' : 'translateY(30px)',
               transition: `all 0.6s ${i * 0.08}s ease`,
             }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = `${f.color}55`;
-              e.currentTarget.style.boxShadow = `0 0 40px ${f.color}18`;
-              e.currentTarget.style.transform = 'translateY(-3px)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = 'var(--border)';
-              e.currentTarget.style.boxShadow = 'none';
-              e.currentTarget.style.transform = 'translateY(0)';
-            }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = `${f.color}55`;
+                e.currentTarget.style.boxShadow = `0 0 40px ${f.color}18`;
+                e.currentTarget.style.transform = 'translateY(-3px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'var(--border)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
             >
               {/* Glow corner */}
               <div style={{ position: 'absolute', top: 0, right: 0, width: 120, height: 120, background: `radial-gradient(circle at top right, ${f.color}18, transparent 70%)`, pointerEvents: 'none' }} />
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-               <div style={{
-                    width: 44, height: 44, borderRadius: 12,
-                    background: `${f.color}18`, border: `1px solid ${f.color}35`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22,
-                  }}><i className={`fas ${f.icon}`} style={{ color: f.color }}></i></div>
+                <div style={{
+                  width: 44, height: 44, borderRadius: 12,
+                  background: `${f.color}18`, border: `1px solid ${f.color}35`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22,
+                }}><i className={`fas ${f.icon}`} style={{ color: f.color }}></i></div>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: f.color, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
                   {f.tag}
                 </span>
@@ -527,8 +526,8 @@ function ProvidersSection() {
   ];
 
   return (
-    <section ref={ref} style={{ padding: '100px 24px', background: 'linear-gradient(to bottom, transparent, rgba(26,91,46,0.06), transparent)' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <section ref={ref} style={{ background: 'linear-gradient(to bottom, transparent, rgba(26,91,46,0.06), transparent)' }} className="section-padding">
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px' }}>
         <div style={{ textAlign: 'center', marginBottom: 64, opacity: inView ? 1 : 0, transition: 'all 0.6s ease' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--green-400)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
             // THE NETWORK
@@ -551,10 +550,10 @@ function ProvidersSection() {
               transform: inView ? 'none' : 'translateY(20px)',
               transition: `all 0.5s ${i * 0.07}s ease`,
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(78,175,125,0.3)'; e.currentTarget.style.background = 'rgba(46,139,87,0.06)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'rgba(10,31,16,0.4)'; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(78,175,125,0.3)'; e.currentTarget.style.background = 'rgba(46,139,87,0.06)'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'rgba(10,31,16,0.4)'; }}
             >
-               <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(46,139,87,0.12)', border: '1px solid rgba(78,175,125,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, flexShrink: 0 }}>
+              <div style={{ width: 48, height: 48, borderRadius: 12, background: 'rgba(46,139,87,0.12)', border: '1px solid rgba(78,175,125,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24, flexShrink: 0 }}>
                 <i className={`fas ${p.icon}`} style={{ color: 'var(--green-400)' }}></i>
               </div>
               <div>
@@ -576,31 +575,35 @@ function ImageBreakSection() {
   const ref = useRef(null);
   const inView = useInView(ref);
   return (
-    <section ref={ref} style={{ padding: '60px 24px' }}>
+    <section ref={ref} style={{ padding: '40px 20px' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{
           position: 'relative', borderRadius: 24, overflow: 'hidden',
           border: '1px solid var(--border)',
           opacity: inView ? 1 : 0, transform: inView ? 'none' : 'scale(0.97)',
           transition: 'all 0.8s ease',
+          background: `linear-gradient(rgba(5,18,9,0.8), rgba(5,18,9,0.8)), url(${KITCHEN_IMAGE})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: 420,
+          display: 'flex',
+          alignItems: 'center',
         }}>
-          <img src={KITCHEN_IMAGE} alt="Modern kitchen" style={{ width: '100%', height: 420, objectFit: 'cover', display: 'block' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(5,18,9,0.85) 40%, transparent)' }} />
-          <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '48px 56px', maxWidth: 560 }}>
+          <div style={{ padding: 'clamp(32px, 8vw, 64px)', maxWidth: 640 }}>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--green-400)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>
               // OUR MISSION
             </div>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 16 }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(24px, 5vw, 44px)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 16 }}>
               Revolutionizing the Supply Chain from Soil to Shelf
             </h2>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, marginBottom: 28 }}>
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: 28, maxWidth: 500 }}>
               The food economy is fragmented, opaque, and inefficient. We're building the intelligence layer that fixes it — for everyone in the chain.
             </p>
-            <div style={{ display: 'flex', gap: 32 }}>
+            <div style={{ display: 'flex', gap: 'clamp(20px, 5vw, 40px)', flexWrap: 'wrap' }}>
               {[['$500K', 'Year 1 GMV Goal'], ['18mo', 'To Profitability'], ['9.5%', 'Market CAGR']].map(([v, l]) => (
                 <div key={l}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 26, fontWeight: 800, color: 'var(--green-400)' }}>{v}</div>
-                  <div style={{ fontSize: 11, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 2 }}>{l}</div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 4vw, 28px)', fontWeight: 800, color: 'var(--green-400)' }}>{v}</div>
+                  <div style={{ fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 2 }}>{l}</div>
                 </div>
               ))}
             </div>
@@ -623,8 +626,8 @@ function RoadmapSection() {
   const colors = ['var(--text-muted)', 'var(--green-400)', 'var(--green-500)', 'var(--amber)'];
 
   return (
-    <section id="roadmap" ref={ref} style={{ padding: '100px 24px' }}>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+    <section id="roadmap" ref={ref} className="section-padding">
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 20px' }}>
         <div style={{ marginBottom: 64, opacity: inView ? 1 : 0, transition: 'all 0.6s ease' }}>
           <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--green-400)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 12 }}>// ROADMAP</div>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 5vw, 52px)', fontWeight: 800, letterSpacing: '-0.03em' }}>
@@ -685,8 +688,8 @@ function WaitlistCTASection() {
   };
 
   return (
-    <section id="about" ref={ref} style={{ padding: '100px 24px' }}>
-      <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
+    <section id="about" ref={ref} className="section-padding">
+      <div style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center', padding: '0 20px' }}>
         <div style={{ opacity: inView ? 1 : 0, transform: inView ? 'none' : 'translateY(30px)', transition: 'all 0.7s ease' }}>
           {/* Glow ring */}
           <div style={{
@@ -708,7 +711,7 @@ function WaitlistCTASection() {
 
           {!submitted ? (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+              <div className="grid-2" style={{ gap: 12 }}>
                 <input
                   type="email"
                   value={email}
@@ -736,7 +739,7 @@ function WaitlistCTASection() {
                   {roles.map(r => <option key={r} value={r} style={{ background: '#0a1f10' }}>{r}</option>)}
                 </select>
               </div>
-              <button type="submit" style={{
+              <button type="submit" className="btn-responsive" style={{
                 background: 'linear-gradient(135deg, #2e8b57, #1a5b2e)',
                 color: 'white', border: '1px solid rgba(78,175,125,0.3)',
                 borderRadius: 10, padding: '16px 32px', fontSize: 15,
@@ -745,8 +748,8 @@ function WaitlistCTASection() {
                 boxShadow: '0 0 40px rgba(46,139,87,0.3)',
                 transition: 'all 0.2s',
               }}
-              onMouseEnter={e => { e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 8px 50px rgba(46,139,87,0.45)'; }}
-              onMouseLeave={e => { e.target.style.transform = 'none'; e.target.style.boxShadow = '0 0 40px rgba(46,139,87,0.3)'; }}
+                onMouseEnter={e => { e.target.style.transform = 'translateY(-2px)'; e.target.style.boxShadow = '0 8px 50px rgba(46,139,87,0.45)'; }}
+                onMouseLeave={e => { e.target.style.transform = 'none'; e.target.style.boxShadow = '0 0 40px rgba(46,139,87,0.3)'; }}
               >
                 Request Early Access →
               </button>
@@ -776,7 +779,7 @@ function WaitlistCTASection() {
 
 function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid var(--border)', padding: '48px 24px', marginTop: 40 }}>
+    <footer style={{ borderTop: '1px solid var(--border)', padding: '48px 20px', marginTop: 40 }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 40, marginBottom: 40 }}>
           <div style={{ maxWidth: 300 }}>
@@ -882,10 +885,10 @@ export default function App() {
 
       {/* Global styles for responsive */}
       <style>{`
-        @media (max-width: 640px) {
-          .desktop-nav { display: none !important; }
+        @media (max-width: 768px) {
+          .desktop-only { display: none !important; }
         }
-        @media (min-width: 641px) {
+        @media (min-width: 769px) {
           .mobile-nav { display: none !important; }
         }
       `}</style>

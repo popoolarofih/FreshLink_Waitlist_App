@@ -100,3 +100,78 @@ body {
 /* Input focus */
 input:focus { outline: none; }
 button:focus-visible { outline: 2px solid var(--green-400); outline-offset: 2px; }
+
+/* Responsive Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Responsive Grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.section-padding {
+  padding: 60px 0;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 100px 0;
+  }
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only { display: none; }
+  .desktop-only { display: block; }
+}
+
+/* Custom Form Transitions */
+.waitlist-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 520px;
+}
+
+@media (min-width: 640px) {
+  .waitlist-form-container {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+/* Fix for long text in buttons */
+.btn-responsive {
+  white-space: normal;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .hero-stats {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 15px !important;
+  }
+}
